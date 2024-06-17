@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('text_color')->nullable();
             $table->string('bg_color')->nullable();
 
-
             $table->timestamps();
         });
     }
