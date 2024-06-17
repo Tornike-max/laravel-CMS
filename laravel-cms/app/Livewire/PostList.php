@@ -16,6 +16,8 @@ class PostList extends Component
 
     #[Url()]
     public $sort = 'desc';
+
+    #[Url()]
     public $search = '';
 
     public function setSort($sort)

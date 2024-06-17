@@ -8,7 +8,6 @@ use Livewire\Component;
 class SearchBox extends Component
 {
 
-    #[Url()]
     public $search = '';
 
     public function updatedSearch()
