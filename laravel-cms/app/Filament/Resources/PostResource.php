@@ -64,7 +64,7 @@ class PostResource extends Resource
                         FileUpload::make('image')->image()->directory('posts/thumbnails'),
                         DateTimePicker::make('published_at')->nullable(),
                         Checkbox::make('featured'),
-                        Select::make('author')
+                        Select::make('user_id')
                             ->live()
                             ->relationship('author', 'name')
                             ->searchable()
