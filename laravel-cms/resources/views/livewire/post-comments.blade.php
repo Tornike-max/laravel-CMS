@@ -18,10 +18,15 @@
     <div class="user-comments px-3 py-2 mt-5">
         @forelse ($this->comments as $comment)
         <div class="comment [&:not(:last-child)]:border-b border-gray-100 py-5">
-            <div class="user-meta flex mb-4 text-sm items-center">
-                <img class="w-7 h-7 rounded-full mr-3" src="" alt="mn">
-                <span class="mr-1">user name</span>
-                <span class="text-gray-500">. {{ $comment->created_at->diffForHumans() }} </span>
+            <div class="flex justify-between items-center">
+                <div class="user-meta flex mb-4 text-sm items-center">
+                    <img class="w-7 h-7 rounded-full mr-3" src="{{ $comment->user->profile_photo_url }}" alt="mn">
+                    <span class="mr-1">{{ $comment->user->name }}</span>
+                    <span class="text-gray-500">. {{ $comment->created_at->diffForHumans() }} </span>
+                </div>
+                <button wire:click="deleteComment({{ $comment }})"
+                    class="text-red-500 hover:text-red-600 font-semibold">Delete
+                    🗑️</button>
             </div>
             <div class="text-justify text-gray-700  text-sm">
                 {{ $comment->comment }}
@@ -32,5 +37,8 @@
             <span> No Comments Posted</span>
         </div>
         @endforelse
+    </div>
+    <div>
+        {{$this->comments->links() }}
     </div>
 </div>

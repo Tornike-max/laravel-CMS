@@ -66,7 +66,7 @@ class User extends Authenticatable
 
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class, 'comments');
     }
 
     public function likes()
@@ -77,5 +77,15 @@ class User extends Authenticatable
     public function hasLiked(Post $post)
     {
         return $this->likes()->where('post_id', $post->id)->exists();
+    }
+
+    public function deleteComment(Comment $comment)
+    {
+        $commentToDelete = $this->comments()
+            ->where('id', $comment->id)
+            ->where('post_id', $comment?->post?->id)
+            ->where('user_id', $comment?->user?->id);
+
+        return $comment->delete($commentToDelete);
     }
 }
