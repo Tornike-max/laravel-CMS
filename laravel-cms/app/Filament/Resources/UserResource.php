@@ -57,6 +57,7 @@ class UserResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('role')
+                    ->sortable()
                     ->searchable(),
             ])
             ->filters([

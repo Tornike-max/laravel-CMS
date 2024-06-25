@@ -51,6 +51,7 @@ class PostList extends Component
     public function posts()
     {
         return Post::published()
+            ->with('author')
             ->when($this->activeCategory, function ($query) {
                 $query->withCategory($this->category);
             })
